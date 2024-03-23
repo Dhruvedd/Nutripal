@@ -34,7 +34,11 @@
       
       <form action="/data" method="post">
         <input type="text" name="input" placeholder="bc">
-        <button type="Submit" onclick="call2()" class="btn btn-primary btn-lg">Submit2</button>
+        <button type="Submit" onclick="update_nut()" class="btn btn-primary btn-lg">Submit2</button>
+      </form>
+
+      <form action="/reset" method="post">
+        <button onclick="reset()" class="btn btn-primary btn-lg">reset</button>
       </form>
 
     <p id="sub">{{content}}</p>
@@ -48,7 +52,7 @@
 
 <script>
 
-    function call2() {
+    function update_nut() {
       fetch('/data')
           .then(response => response.text())
           .then(data => console.log(data))
@@ -56,6 +60,25 @@
       
         location.reload();
   }
+
+  function reset() {
+    fetch('/reset')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text(); // Assuming the response is text
+        })
+        .then(data => {
+            // Handle the response data here
+            console.log('Reset successful');
+            // You might want to update the UI or take other actions based on the response
+        })
+        .catch(error => {
+            // Handle errors here
+            console.error('There was a problem with the fetch operation:', error);
+        });
+}
 
 </script>
 

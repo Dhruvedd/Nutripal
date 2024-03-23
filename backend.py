@@ -16,7 +16,8 @@ inst_data = {
     "Protein": 0,
     "Sugar": 0,
     "Fats": 0,
-    "Fiber": 0
+    "Fiber": 0,
+    "Carbs": 0
 }
 
 goal_data = {
@@ -25,29 +26,48 @@ goal_data = {
     "Protein": 0,
     "Sugar": 0,
     "Fats": 0,
-    "Fiber": 0
+    "Fiber": 0,
+    "Carbs": 0
 }
 
 @app.route("/parse")
 def parse(file):
 
     
-    inst_data["Calories"] = file[0]["calories"]
-    inst_data["Protein"] = file[0]["protein_g"]
-    inst_data["Sugar"] = file[0]["sugar_g"]
-    inst_data["Fats"] = file[0]["fat_total_g"]
-    inst_data["Fiber"] = file[0]["fiber_g"]
-    
-    goal_data["Calories"] += file[0]["calories"]
-    goal_data["Protein"] += file[0]["protein_g"]
-    goal_data["Sugar"] =+ file[0]["sugar_g"]
-    goal_data["Fats"] =+ file[0]["fat_total_g"]
-    goal_data["Fiber"] =+ file[0]["fiber_g"]
-    
-    
+    inst_data["Calories"] = int(file[0]["calories"])
+    inst_data["Protein"] = int(file[0]["protein_g"])
+    inst_data["Sugar"] = int(file[0]["sugar_g"])
+    inst_data["Fats"] = int(file[0]["fat_total_g"])
+    inst_data["Fiber"] = int(file[0]["fiber_g"])
+    inst_data["Carbs"] = int(file[0]["carbohydrates_total_g"])
+
+    goal_data["Calories"] += int(file[0]["calories"])
+    goal_data["Protein"] += int(file[0]["protein_g"])
+    goal_data["Sugar"] += int(file[0]["sugar_g"])
+    goal_data["Fats"] += int(file[0]["fat_total_g"])
+    goal_data["Fiber"] += int(file[0]["fiber_g"])
+    goal_data["Carbs"] += int(file[0]["carbohydrates_total_g"])
+
     
     return render_template("Web.html", content=goal_data)
 
+
+@app.route("/reset", methods=['GET', 'POST'])
+def reset_values():
+    
+    goal_data["Calories"] = 0
+    goal_data["Protein"] = 0
+    goal_data["Sugar"] = 0
+    goal_data["Fats"] = 0
+    goal_data["Fiber"] = 0
+    goal_data["Carbs"] = 0
+    
+    return render_template("Web.html", content=goal_data)
+
+
+@app.route("/generate", methods=['GET', 'POST'])
+def generate():
+    pass
 
 
 @app.route('/data', methods=['POST'])
