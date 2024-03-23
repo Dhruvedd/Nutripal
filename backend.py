@@ -1,5 +1,6 @@
 import requests
 from flask import Flask, redirect, url_for, render_template, jsonify, request
+import json
 
 app = Flask(__name__)
 
@@ -9,7 +10,16 @@ def home():
 
 
 
-all_data = {
+inst_data = {
+    
+    "Calories": 0,
+    "Protein": 0,
+    "Sugar": 0,
+    "Fats": 0,
+    "Fiber": 0
+}
+
+goal_data = {
     
     "Calories": 0,
     "Protein": 0,
@@ -20,13 +30,23 @@ all_data = {
 
 @app.route("/parse")
 def parse(file):
+
+    
+    inst_data["Calories"] = file[0]["calories"]
+    inst_data["Protein"] = file[0]["protein_g"]
+    inst_data["Sugar"] = file[0]["sugar_g"]
+    inst_data["Fats"] = file[0]["fat_total_g"]
+    inst_data["Fiber"] = file[0]["fiber_g"]
+    
+    goal_data["Calories"] += file[0]["calories"]
+    goal_data["Protein"] += file[0]["protein_g"]
+    goal_data["Sugar"] =+ file[0]["sugar_g"]
+    goal_data["Fats"] =+ file[0]["fat_total_g"]
+    goal_data["Fiber"] =+ file[0]["fiber_g"]
     
     
     
-    
-    
-    
-    return render_template("Web.html", content=file)
+    return render_template("Web.html", content=goal_data)
 
 
 
