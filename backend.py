@@ -114,7 +114,7 @@ def generate():
    " and my progress at the end of the was "''' + str(goal_data["Fiber"]) + '''
    ". My Carbs Goal for the day was "''' + str(aim_data["Carbs"]) + '''
    " and my progress at the end of the was "''' + str(goal_data["Carbs"]) + '''". 
-   use this data to reccomend me what I should eat. Keep your response very short and concise" 
+   use this data to recommend me what I should eat. give me 2-3 recommendations of dishes to help me. Keep your response very short and very concise" 
    ''')
     
      
