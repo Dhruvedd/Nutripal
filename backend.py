@@ -16,12 +16,6 @@ from ai import *
 import firebase
 from firebase import *
 
-
-current_user = {
-    "username":None,
-    "password":None
-}
-
 @app.route("/logload")
 def load():
     return render_template("login.html")
@@ -31,23 +25,6 @@ def loadInd():
     return render_template("index.html")
 
 from flask import request, jsonify
-
-@app.route("/logsub", methods=["POST"])
-def set_curr():
-    try:
-       
-        uname = request.form["username",False]
-        passw = request.form["password", False]
-        truth = login(uname, passw)
-        if not truth:
-            current_user["username"] = uname
-            current_user["password"] = passw
-            return render_template("login.html", bool=False)
-        
-        else: render_template("index.html")
-           
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
     
     
 
@@ -77,10 +54,6 @@ def look():
     except Exception as e:
         # Handle exceptions
         return jsonify({'error': str(e)}), 500
-    
-    
-    
-    
     
 
 

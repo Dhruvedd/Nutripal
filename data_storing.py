@@ -4,7 +4,6 @@ import json
 
 
 import backend
-from backend import current_user
 
 import firebase
 from firebase import *
@@ -13,9 +12,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
-
-
+    return render_template("login.html")
 
 inst_data = {
     
@@ -64,8 +61,6 @@ def parse(file):
     goal_data["Fats"] += int(file[0]["fat_total_g"])
     goal_data["Fiber"] += int(file[0]["fiber_g"])
     goal_data["Carbs"] += int(file[0]["carbohydrates_total_g"])
-    
-    update_database(current_user["username"], current_user["password"], aim_data, goal_data)
 
     
     return render_template("index.html",
@@ -92,8 +87,6 @@ def reset_values():
     goal_data["Fiber"] = 0
     goal_data["Carbs"] = 0
     
-    update_database(current_user["username"], current_user["password"], aim_data, goal_data)
-    
     return render_template("index.html")
 
 
@@ -106,8 +99,6 @@ def aimset():
     aim_data["Sugar"] = int(request.form["sugarName"])
     aim_data["Fiber"] = int(request.form["fiberName"])
     aim_data["Carbs"] = int(request.form["carbsName"])
-    
-    update_database(current_user["username"], current_user["password"], aim_data, goal_data)
     
     return render_template("index.html", aim_calories = aim_data["Calories"], aim_protein = aim_data["Protein"], aim_fat = aim_data["Fats"], aim_carbs = aim_data["Carbs"], aim_sugar = aim_data["Sugar"], aim_fiber = aim_data["Fiber"])
 
