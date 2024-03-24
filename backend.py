@@ -13,6 +13,26 @@ from data_storing import *
 import ai
 from ai import *
 
+import firebase
+from firebase import *
+
+current_user = {
+    "username":None,
+    "password":None
+}
+
+@app.route("/logsub", methods=["POST"])
+def set_curr():
+    uname = request.form["username"],
+    passw = request.form["password"]
+    
+    truth = login(uname,passw)
+    
+    if(truth):
+        current_user["username"] = uname
+        current_user["password"] = passw
+
+
 
 @app.route("/data")
 def api_run():

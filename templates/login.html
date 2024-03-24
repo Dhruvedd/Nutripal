@@ -8,7 +8,7 @@
     <style>
         /* Add your custom styles for the login page here */
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url({{ url_for('static', filename='builtin/background.jpg') }}) center/cover fixed no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('background.jpg') center/cover fixed no-repeat;
             background-size: cover;
             background-position: center;
             font-family: Arial, sans-serif;
@@ -89,6 +89,7 @@
         <h1 class="text-center text-2xl font-semibold mb-4">Login</h1>
         <div class="form">
             <div class="control block-cube block-input">
+                <form action="/logsub" method="post">
                 <input type="text" id="username" name="username" class="form-input" placeholder="Username" required>
                 <div class="bg bg-top">
                     <div class="bg-inner"></div>
@@ -113,16 +114,18 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn-login block-cube block-cube-hover">Login</button>
+    </form>
+        <button type="submit" class="btn-login block-cube block-cube-hover" onclick="auth()">Login</button>
     </div>
 
     <!-- Include any necessary JavaScript files -->
     <script>
-        // Show login container with animation
-        window.onload = function() {
-            document.getElementById('loginContainer').classList.add('show');
-        };
+        function auth(){
+            fetch('/logsub')
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        }
     </script>
 </body>
 </html>
-

@@ -2,6 +2,13 @@ import requests
 from flask import Flask, redirect, url_for, render_template, jsonify, request
 import json
 
+
+import backend
+from backend import current_user
+
+import firebase
+from firebase import *
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -57,11 +64,23 @@ def parse(file):
     goal_data["Fats"] += int(file[0]["fat_total_g"])
     goal_data["Fiber"] += int(file[0]["fiber_g"])
     goal_data["Carbs"] += int(file[0]["carbohydrates_total_g"])
+    
+    update_database(current_user["username"], current_user["password"], aim_data, goal_data)
 
     
-    return render_template("index.html", curr_calories = goal_data["Calories"], aim_calories = aim_data["Calories"])
-
-# "index.html", curr_calories = goal_data["Calories"], curr_protein = goal_data["Protein"], curr_fat = goal_data["Fats"], curr_carbs = goal_data["Carbs"], curr_sugar = goal_data["Sugar"], curr_fiber = goal_data["Fiber"]
+    return render_template("index.html",
+                           curr_calories = goal_data["Calories"],
+                           curr_protein = goal_data["Protein"], 
+                           curr_fat = goal_data["Fats"], 
+                           curr_carbs = goal_data["Carbs"], 
+                           curr_sugar = goal_data["Sugar"], 
+                           curr_fiber = goal_data["Fiber"], 
+                           aim_calories = aim_data["Calories"], 
+                           aim_protein = aim_data["Protein"], 
+                           aim_fat = aim_data["Fats"], 
+                           aim_carbs = aim_data["Carbs"], 
+                           aim_sugar = aim_data["Sugar"], 
+                           aim_fiber = aim_data["Fiber"])
 
 @app.route("/reset", methods=["POST"])
 def reset_values():
@@ -73,6 +92,8 @@ def reset_values():
     goal_data["Fiber"] = 0
     goal_data["Carbs"] = 0
     
+    update_database(current_user["username"], current_user["password"], aim_data, goal_data)
+    
     return render_template("index.html")
 
 
@@ -80,11 +101,13 @@ def reset_values():
 def aimset():
     
     aim_data["Calories"] = int(request.form["calorieName"])
-    aim_data["Protien"] = int(request.form["proteinName"])
+    aim_data["Protein"] = int(request.form["proteinName"])
     aim_data["Fats"] = int(request.form["fatName"])
     aim_data["Sugar"] = int(request.form["sugarName"])
     aim_data["Fiber"] = int(request.form["fiberName"])
     aim_data["Carbs"] = int(request.form["carbsName"])
+    
+    update_database(current_user["username"], current_user["password"], aim_data, goal_data)
     
     return render_template("index.html", aim_calories = aim_data["Calories"], aim_protein = aim_data["Protein"], aim_fat = aim_data["Fats"], aim_carbs = aim_data["Carbs"], aim_sugar = aim_data["Sugar"], aim_fiber = aim_data["Fiber"])
 

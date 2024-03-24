@@ -181,34 +181,33 @@ nav {
                 <form action="/reset" method="post" class="text-center">
                     <div class="slider-container">
                         <label class="block text-sm font-semibold mb-1">Calorie Progress:</label>
-                        <input id="slider1" type="range" min="0" max="1" value="0" class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
-                        <!--<p id="calTrack">{{curr_calories}}/{{aim_calories}}</p>-->
-                        <input id="extValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        <input id="slider1" type="range" min="0" max={{aim_calories}} value={{curr_calories}} class="ider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="extValue" class="xtValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{curr_calories}}/{{aim_calories}}" disabled></input>
                     </div>
                     <div class="slider-container">
                         <label class="block text-sm font-semibold mb-1">Protein Progress:</label>
-                        <input id="lider" type="range" min="0" max={{aim_protein}} value={{curr_protein}} class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
-                        <input id="extValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        <input id="slider1" type="range" min="0" max={{aim_protein}} value={{curr_protein}} class="ider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="extValue" class="xtValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{curr_protein}}/{{aim_protein}}" disabled></input>
                     </div>
                     <div class="slider-container">
                         <label class="block text-sm font-semibold mb-1">Fat Progress:</label>
-                        <input id="lider" type="range" min="0" max={{aim_fat}} value={{curr_fat}} class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
-                        <input id="extValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        <input id="slider1" type="range" min="0" max={{aim_fat}} value={{curr_fat}} class="ider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="extValue" class="xtValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{curr_fat}}/{{aim_fat}}" disabled></input>
                     </div>
                     <div class="slider-container">
                         <label class="block text-sm font-semibold mb-1">Carbs Progress:</label>
-                        <input id="lider" type="range" min="0" max={{aim_carbs}} value={{curr_carbs}} class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
-                        <input id="extValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        <input id="slider1" type="range" min="0" max={{aim_carbs}} value={{curr_carbs}} class="ider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="extValue" class="xtValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{curr_carbs}}/{{aim_carbs}}" disabled></input>
                     </div>
                     <div class="slider-container">
                         <label class="block text-sm font-semibold mb-1">Sugar Progress:</label>
-                        <input id="lider" type="range" min="0" max={{aim_sugar}} value={{curr_sugar}} class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
-                        <input id="extValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        <input id="slider1" type="range" min="0" max={{aim_sugar}} value={{curr_sugar}} class="ider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="extValue" class="xtValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{curr_sugar}}/{{aim_sugar}}" disabled></input>
                     </div>
                     <div class="slider-container">
                         <label class="block text-sm font-semibold mb-1">Fiber Progress:</label>
-                        <input id="lider" type="range" min="0" max={{aim_fiber}} value={{curr_fiber}} class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
-                        <input id="extValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        <input id="slider1" type="range" min="0" max={{aim_fiber}} value={{curr_fiber}} class="ider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="extValue" class="xtValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{curr_fiber}}/{{aim_fiber}}" disabled></input>
                     </div>
                     <button id="button" onclick="reset()" type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mx-auto">Reset Progress</button>
 
@@ -257,8 +256,6 @@ nav {
                         .then(response => response.text())
                         .then(data => console.log(data))
                         .catch(error => console.error('Error:', error));
-                   
-                    document.getElementById("slider1").value = parseFloat(document.getElementById("calTrack").textContent)
                 }
 
 
@@ -276,28 +273,55 @@ nav {
               
                 // Attach event listeners to all sliders
                 sliders.forEach(slider => {
-                  // Initial update
-                  updateTextInput(slider);
-                  // Update on input change
-                  slider.addEventListener('input', function() {
-                    updateTextInput(this);
+                    // Initial update
+                    updateTextInput(slider);
+                    // Update on input change
+                    slider.addEventListener('input', function() {
+                      updateTextInput(this);
+                    });
                   });
-                });
+
+    var der = document.getElementById("slider1");
+    var output = document.getElementById("extValue");
+
+    output.innerHTML = der.value;
+
+    der.oninput = function()
+    {
+    this.value = output.innerHTML;
+      //tempinput = slider;
+    }
+
+    der.addEventListener("input", function(e)
+    {
+    der.value = tempinput;
+    });
+
+    var der2 = document.getElementById("slider2");
+    var output2 = document.getElementById("extValue2");
+
+    output2.innerHTML = der2.value;
+
+    der2.oninput = function()
+    {
+    this.value = output2.innerHTML;
+      //tempinput = slider;
+    }
+
+    der2.addEventListener("input", function(e)
+    {
+    der2.value = tempinput;
+    });
+
+    
+
+// Update value input value when range input changes
 
 
                 /Mobile version/
                 document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden')});
 
-            let range = document.getElementById('slider1');
-let button = document.getElementById('button');
-// using an event listener on the button and listening for a click
-// when clicked, the value for the range slider will be set to '90'
-// reference the key of the element/s as the selector method used could have more than one element.
-button[0].addEventListener('click', function() {
-  range[0].value = 90;
-})
-        });
               </script>
               
       
