@@ -1,0 +1,248 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+
+    <style>
+
+@import url('https://fonts.googleapis.com/css?family=Gochi+Hand');
+
+nav {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+        .welcome-text {
+            font-size: 90px;
+            font-weight: 600;
+            font-family: 'Gochi Hand', cursive;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            /*hi*/
+        }
+
+        .dark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); /* Adjust transparency here */
+            z-index: -1; /* Ensure it stays behind other content */
+        }
+
+        /* Add background image */
+        body {
+            background: url('background.jpg') center/cover fixed no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            overflow-y: hidden;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+           
+        }
+
+     
+
+
+
+        .card1, .card2 {
+            width: 50%;
+            padding: 2rem;
+            border-radius: 2.5rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            margin: 2%;
+        }
+
+
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem; 
+        }
+
+        .slider-output {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .slider-label {
+            margin-right: 1rem;
+        }
+        
+        #textValue {
+            width: 60px;
+        }
+
+        .center-align{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+
+    </style>
+
+    
+    <body>
+        <nav class="py-4 bg-transparent fixed w-full z-50">
+            <div class="container mx-auto flex justify-between items-center">
+                <!-- Logo -->
+                <div>
+                    <a href="#" class="text-white text-3xl font-bold">NutriPal</a>
+                </div>
+                <!-- Navbar links -->
+                <div class="hidden md:block text-xl">
+                    <ul class="flex space-x-4 text-white">
+                        <li><a href="#" class="hover:text-gray-300 font-bold">Home</a></li>
+                        <li><a href="#" class="hover:text-gray-300 font-bold">About</a></li>
+                        <li><a href="#" class="hover:text-gray-300 font-bold">Services</a></li>
+                        <li><a href="#" class="hover:text-gray-300 font-bold">Contact</a></li><!-- Added font-bold -->
+                    </ul>
+                </div>
+                <!-- Mobile menu button (hidden on larger screens) -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Mobile menu (hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 py-2">
+            <ul class="text-white text-center">
+                <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Home</a></li>
+                <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">About</a></li>
+                <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Services</a></li>
+                <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Contact</a></li>
+            </ul>
+        </div>
+        <div class="dark-overlay"></div>
+        <div class="flex items-center justify-center min-h-screen flex-col">
+            <h1 class="welcome-text">NutriPal</h1> <!-- Added welcome-text class -->
+            <div class="card-container">
+                <!-- Daily Goal Card -->
+                <div class="card1">
+                    <h2 class="text-lg font-bold mb-4 text-center">Daily Goal</h2>
+                    <form class="text-center">
+                        
+                        <div class = "slider-container">
+                            <label class="block text-sm font-semibold mb-1">Calorie Goal:</label>
+                            <input id="slider" type="range" min="0" max="4000" value="2000" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
+                            <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        </div>
+                        <div class = "slider-container">
+                            <label class="block text-sm font-semibold mb-1">Protein:</label>
+                            <input id="slider" type="range" min="0" max="4000" value="2000" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
+                            <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        </div>
+                        <div class = "slider-container">
+                            <label class="block text-sm font-semibold mb-1">Fat:</label>
+                            <input id="slider" type="range" min="0" max="4000" value="2000" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
+                            <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        </div>
+                        <div class = "slider-container">
+                            <label class="block text-sm font-semibold mb-1">Carbs:</label>
+                            <input id="slider" type="range" min="0" max="4000" value="2000" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
+                            <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        </div>
+                        <div class = "slider-container">
+                            <label class="block text-sm font-semibold mb-1">Sugar:</label>
+                            <input id="slider" type="range" min="0" max="4000" value="2000" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
+                            <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        </div>
+                        <div class = "slider-container">
+                            <label class="block text-sm font-semibold mb-1">Fiber:</label>
+                            <input id="slider" type="range" min="0" max="4000" value="2000" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
+                            <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                        </div>
+                        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mx-auto">Save Goals</button>
+                        
+                    </form>
+                
+                </div>
+            
+            <div class="card2">
+                <h2 class="text-lg font-bold mb-4 text-center">Progress</h2>
+                <form class="text-center">
+                    <div class="slider-container">
+                        <label class="block text-sm font-semibold mb-1">Calorie Progress:</label>
+                        <input id="slider" type="range" min="0" max={{aim_calories}} value={{curr_calories}} class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                    </div>
+                    <div class="slider-container">
+                        <label class="block text-sm font-semibold mb-1">Protein Progress:</label>
+                        <input id="slider" type="range" min="0" max={{aim_protein}} value={{curr_protein}} class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                    </div>
+                    <div class="slider-container">
+                        <label class="block text-sm font-semibold mb-1">Fat Progress:</label>
+                        <input id="slider" type="range" min="0" max={{aim_fat}} value={{curr_fat}} class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                    </div>
+                    <div class="slider-container">
+                        <label class="block text-sm font-semibold mb-1">Carbs Progress:</label>
+                        <input id="slider" type="range" min="0" max={{aim_carbs}} value={{curr_carbs}} class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                    </div>
+                    <div class="slider-container">
+                        <label class="block text-sm font-semibold mb-1">Sugar Progress:</label>
+                        <input id="slider" type="range" min="0" max={{aim_sugar}} value={{curr_sugar}} class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                    </div>
+                    <div class="slider-container">
+                        <label class="block text-sm font-semibold mb-1">Fiber Progress:</label>
+                        <input id="slider" type="range" min="0" max={{aim_fiber}} value={{curr_fiber}} class="slider w-3/10 h-2 bg-yellow-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-yellow" disabled>
+                        <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
+                    </div>
+                    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mx-auto">Save Goals</button>
+
+                </form>
+            </div>
+        </div>
+        </div>
+        <body>
+            
+
+            <script>
+                // Get all sliders and text inputs
+                const sliders = document.querySelectorAll('.slider');
+                const textInputs = document.querySelectorAll('.textValue');
+              
+                // Function to update text inputs based on slider value
+                function updateTextInput(slider) {
+                  const value = slider.value;
+                  // Find the corresponding text input and update its value
+                  const textInput = slider.nextElementSibling;
+                  textInput.placeholder = value;
+                }
+              
+                // Attach event listeners to all sliders
+                sliders.forEach(slider => {
+                  // Initial update
+                  updateTextInput(slider);
+                  // Update on input change
+                  slider.addEventListener('input', function() {
+                    updateTextInput(this);
+                  });
+                });
+
+
+                /*Mobile version*/
+                document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+              </script>
+              
+      
+</html>
