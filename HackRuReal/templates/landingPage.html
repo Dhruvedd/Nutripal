@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Gochi+Hand');
+
+        .welcome-text {
+            font-size: 120px;
+            font-weight: 600;
+            font-family: 'Gochi Hand', cursive;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .description {
+            font-size: 44px;
+            margin-bottom: 40px;
+            font-family: 'Gochi Hand';
+            opacity: 0; /* Initially hide the description */
+            animation: slideIn 1s ease forwards; /* Apply animation */
+        }
+
+        body {
+            color: white;
+            margin-bottom: 2rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url({{ url_for('static', filename='builtin/background.jpg') }}) center/cover fixed no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow-y: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+        }
+
+        .title {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-container a {
+            margin-right: 10px;
+        }
+
+        /* Animation for sliding in the description */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="welcome-text">Welcome to NutriPal!</h1>
+        <p class="description">
+            NutriPal is your personalized nutrition assistant, streamlining the path to your health goals. 
+            Simply input your meals and desired nutritional targets, and NutriPal will provide instant feedback on how 
+            well you're aligning with your objectives. With clear insights and intuitive tools, NutriPal empowers you to make 
+            informed dietary choices, ensuring you're always on track to achieve your optimal nutrition levels.
+        </p>
+        <div class="btn-container">
+            <a href="{{ url_for('logload') }}">Login</a>
+            <a href="#" class="btn">Sign Up</a>
+        </div>
+    </div>
+
+    <script>
+
+
+        // Delay the animation to start after the page loads
+        window.onload = function() {
+            const description = document.querySelector('.description');
+            description.style.animationDelay = '0.5s';
+            description.style.animationDuration = '2s';
+        };
+    </script>
+</body>
+</html>
+

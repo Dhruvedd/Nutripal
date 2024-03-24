@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Gochi+Hand');
+
+        nav {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        /* Body and Overlay Styles */
+        body {
+            background: url({{ url_for('static', filename='builtin/background.jpg') }}) center/cover fixed no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            overflow-y: hidden;
+            position: relative;
+            font-family: 'Calibri';
+        }
+
+        .dark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+            z-index: -1;
+        }
+
+        /* Search Container Styles */
+        .search-container {
+            margin: 20px auto;
+            width: 50%;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Align items vertically */
+            justify-content: center; /* Center content horizontally */
+        }
+
+        /* Search Input Styles */
+        #searchInput {
+            flex: 1; /* Grow to fill available space */
+            padding: 12px;
+            border-radius: 5px;
+            border: 2px solid #eedb33;
+            margin-right: 10px; /* Add some spacing between input and button */
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: Arial, sans-serif;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: #eedb33;
+        }
+
+        /* Search Button Styles */
+        #searchButton {
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        #searchButton:hover {
+            background-color: #0056b3;
+        }
+
+        /* Results Box Styles */
+        #results {
+            margin: 20px auto;
+            width: 250px;
+            height: 350px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #eedb33;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            max-height: 400px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        #results::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        #results::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        #results::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+
+        #results::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Welcome Text Styles */
+        .welcome-text {
+            font-size: 36px;
+            font-weight: 600;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Nutrition Label Placeholder Styles */
+        .nutrition-label {
+            width: 200px; /* Adjust width as needed */
+            height: 300px; /* Adjust height as needed */
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="py-4 bg-transparent fixed w-full z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div>
+                <a href="#" class="text-white text-3xl font-bold">NutriPal</a>
+            </div>
+            <!-- Navbar links -->
+            <div class="hidden md:block text-xl">
+                <ul class="flex space-x-4 text-white">
+                    <li class="font-bold cursor-pointer hover:text-gray-300" onclick="home()">Home</li>
+                    <li class="font-bold cursor-pointer hover:text-gray-300" onclick="nutrientsInput()">Get Nutrients</li>
+                    <li class="font-bold cursor-pointer hover:text-gray-300" onclick="rec()">NutriPal AI</li>
+                    <li class="font-bold cursor-pointer hover:text-gray-300" onclick="login()">Login</li><!-- Added font-bold -->
+                </ul>
+            </div>
+            <!-- Mobile menu button (hidden on larger screens) -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden hidden bg-gray-800 py-2">
+
+        <ul class="text-white text-center">
+            <li class="font-bold cursor-pointer hover:text-gray-300" onclick="home()">Home</li>
+                    <li class="font-bold cursor-pointer hover:text-gray-300" onclick="nutrientsInput()">Get Nutrients</li>
+                    <li class="font-bold cursor-pointer hover:text-gray-300" onclick="rec()">NutriPal AI</li>
+                    <li class="font-bold cursor-pointer hover:text-gray-300" onclick="login()">Login</li>
+        </ul>
+    </div>
+    <div class="dark-overlay"></div>
+    <div class="flex items-center justify-center min-h-screen flex-col">
+        <h1 class="welcome-text">Search for Food or Meal</h1>
+        <div class="search-container">
+            <form action="/look" method="post">
+                <input name="inp" type="text" id="searchInput" placeholder="Enter food or meal...">
+                <button type="submit" id="searchButton" onclick="look()">Search</button>
+            </form>
+        </div>
+        <div>
+
+        <div id="results">
+            <h2 class="text-xl font-bold mb-2">Nutrition Information</h2>
+    <ul class="text-lg">
+        <li><strong>Item: {{inp}}</strong> <span id="calories"></span></li>
+        <br>
+        <li><strong>Calories:{{cal}}</strong> <span id="calories"></span></li>
+        <li><strong>Protein(g):{{pro}}</strong> <span id="protein"></span></li>
+        <li><strong>Fat(g):{{fat}}</strong> <span id="fat"></span></li>
+        <li><strong>Carbs(g):{{car}}</strong> <span id="carbs"></span></li>
+        <li><strong>Sugar(g):{{sug}}</strong> <span id="sugar"></span></li>
+        <li><strong>Fiber(g):{{fib}}</strong> <span id="fiber"></span></li>
+    </ul>
+
+            
+            <!-- Results will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Include any necessary JavaScript files -->
+    <script>
+        function search() {
+            // Call backend API to perform search and update results box
+        };
+        /Mobile version/
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+       
+
+        });
+
+        function look() {
+            fetch('/look')
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        }
+
+        function home() {
+            window.location.href = '/'; // Redirect to the '/' route
+        }
+
+        function rec() {
+            window.location.href = '/rec'; // Redirect to the '/rec' route
+        }
+    </script>
+</body>
+</html>
