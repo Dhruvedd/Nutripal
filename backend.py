@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("Web.html")
+    return render_template("index.html")
 
 import data_storing
 from data_storing import *
