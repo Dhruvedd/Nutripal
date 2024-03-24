@@ -103,12 +103,14 @@
             informed dietary choices, ensuring you're always on track to achieve your optimal nutrition levels.
         </p>
         <div class="btn-container">
-            <a href="login.html" class="btn">Login</a>
+            <a href="{{ url_for('logload') }}">Login</a>
             <a href="#" class="btn">Sign Up</a>
         </div>
     </div>
 
     <script>
+
+
         // Delay the animation to start after the page loads
         window.onload = function() {
             const description = document.querySelector('.description');

@@ -33,7 +33,7 @@ nav {
 
         /* Add background image */
         body {
-            background: url('background.jpg') center/cover fixed no-repeat;
+            background: url({{ url_for('static', filename='builtin/background.jpg') }}) center/cover fixed no-repeat;
             background-size: cover;
             background-position: center;
             min-height: 100vh;
@@ -138,7 +138,7 @@ nav {
                 <!-- Daily Goal Card -->
                 <div class="card1">
                     <h2 class="text-lg font-bold mb-4 text-center">Daily Goal</h2>
-                    <form method="post" action="/aimset" class="text-center">
+                    <form action ="/aimset" class="text-center" method="post">
                         
                         <div class = "slider-container">
                             <label class="block text-sm font-semibold mb-1">Calorie Goal:</label>
@@ -146,36 +146,35 @@ nav {
                             <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
                         </div>
                         <div class = "slider-container">
-                            <label class="block text-sm font-semibold mb-1">Protein Goal:</label>
-                            <input name="proteinName" id="slider" type="range" min="0" max="4000" value="2000" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
+                            <label class="block text-sm font-semibold mb-1">Protein Goal(g):</label>
+                            <input name="proteinName" id="slider" type="range" min="0" max="300" value="50" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
                             <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
                         </div>
                         <div class = "slider-container">
-                            <label class="block text-sm font-semibold mb-1">Fats Goal:</label>
-                            <input name="fatName" id="slider" type="range" min="0" max="4000" value="2000" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
+                            <label class="block text-sm font-semibold mb-1">Fats Goal(g):</label>
+                            <input name="fatName" id="slider" type="range" min="0" max="120" value="70" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
                             <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
                         </div>
                         <div class = "slider-container">
-                            <label class="block text-sm font-semibold mb-1">Carbs Goal:</label>
-                            <input name="carbsName" id="slider" type="range" min="0" max="4000" value="2000" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
+                            <label class="block text-sm font-semibold mb-1">Carbs Goal(g):</label>
+                            <input name="carbsName" id="slider" type="range" min="0" max="500" value="250" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
                             <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
                         </div>
                         <div class = "slider-container">
-                            <label class="block text-sm font-semibold mb-1">Sugar Goal:</label>
-                            <input name="sugarName" id="slider" type="range" min="0" max="4000" value="2000" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
+                            <label class="block text-sm font-semibold mb-1">Sugar Goal(g):</label>
+                            <input name="sugarName" id="slider" type="range" min="0" max="200" value="60" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
                             <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
                         </div>
                         <div class = "slider-container">
-                            <label class="block text-sm font-semibold mb-1">Fiber Goal:</label>
-                            <input name="fiberName" id="slider" type="range" min="0" max="4000" value="2000" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
+                            <label class="block text-sm font-semibold mb-1">Fiber Goal(g):</label>
+                            <input name="fiberName" id="slider" type="range" min="0" max="50" value="30" class="slider w-3/10 h-2 bg-green-400 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider-thumb-green">
                             <input id="textValue" class="textValue block bg-transperent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Value"></input>
                         </div>
-                        <button onclick="aimset()" type="Submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mx-auto">Save Goals</button>
+                        <button onclick="aimset()" type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mx-auto">Save Goals</button>
                         
                     </form>
-                
                 </div>
-            
+
             <div class="card2">
                 <h2 class="text-lg font-bold mb-4 text-center">Progress</h2>
                 <form action="/reset" method="post" class="text-center">
@@ -257,6 +256,19 @@ nav {
                         .then(data => console.log(data))
                         .catch(error => console.error('Error:', error));
                 }
+
+                function rec() {
+                    window.location.href = '/rec'; // Redirect to the '/rec' route
+                }
+
+                function home() {
+                    window.location.href = '/'; // Redirect to the '/' route
+                }
+
+                function nutrientsInput() {
+                    window.location.href = '/nutri/'; // Redirect to the '/nutri' route
+                }
+                
 
 
                 // Get all sliders and text inputs
