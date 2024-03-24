@@ -36,10 +36,26 @@
         <input type="text" name="input" placeholder="bc">
         <button type="Submit" onclick="update_nut()" class="btn btn-primary btn-lg">Submit2</button>
       </form>
+<br>
+      <form action="/aimset" method="post">
+        <input type="text" name="Calories" placeholder="bc">
+        <input type="text" name="Protein" placeholder="mc">
+        <input type="text" name="Fats" placeholder="bc">
+        <input type="text" name="Sugar" placeholder="mc">
+        <input type="text" name="Fiber" placeholder="bc">
+        <input type="text" name="Carbs" placeholder="mc">
+        <button type="Submit" onclick="aimset()" class="btn btn-primary btn-lg">Goal set</button>
+      </form>
 
       <form action="/reset" method="post">
         <button onclick="reset()" class="btn btn-primary btn-lg">reset</button>
       </form>
+<br>
+<br>
+      <form action="/generate" method="post">
+        <button type="Submit" onclick="generate()" class="btn btn-primary btn-lg">generate</button>
+      </form>
+
 
     <p id="sub">{{content}}</p>
 
@@ -61,8 +77,36 @@
         location.reload();
   }
 
+  function aimset() {
+    fetch('/aimset')
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+    
+      location.reload();
+}
+
   function reset() {
     fetch('/reset')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text(); // Assuming the response is text
+        })
+        .then(data => {
+            // Handle the response data here
+            console.log('Reset successful');
+            // You might want to update the UI or take other actions based on the response
+        })
+        .catch(error => {
+            // Handle errors here
+            console.error('There was a problem with the fetch operation:', error);
+        });
+      }
+
+  function generate() {
+    fetch('/generate')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');

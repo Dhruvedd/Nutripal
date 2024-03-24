@@ -30,6 +30,16 @@ goal_data = {
     "Carbs": 0
 }
 
+aim_data = {
+    
+    "Calories": 0,
+    "Protein": 0,
+    "Sugar": 0,
+    "Fats": 0,
+    "Fiber": 0,
+    "Carbs": 0
+}
+
 @app.route("/parse")
 def parse(file):
 
@@ -52,7 +62,7 @@ def parse(file):
     return render_template("Web.html", content=goal_data)
 
 
-@app.route("/reset", methods=['GET', 'POST'])
+@app.route("/reset")
 def reset_values():
     
     goal_data["Calories"] = 0
@@ -62,12 +72,20 @@ def reset_values():
     goal_data["Fiber"] = 0
     goal_data["Carbs"] = 0
     
-    return render_template("Web.html", content=goal_data)
+    return render_template("Web.html", content = goal_data)
 
 
-@app.route("/generate", methods=['GET', 'POST'])
-def generate():
-    pass
+@app.route("/aimset", methods=['GET', 'POST'])
+def aimset():
+    
+    aim_data["Calories"] = int(request.form["Calories"])
+    aim_data["Protien"] = int(request.form["Protein"])
+    aim_data["Fats"] = int(request.form["Fats"])
+    aim_data["Sugar"] = int(request.form["Sugar"])
+    aim_data["Fiber"] = int(request.form["Fiber"])
+    aim_data["Carbs"] = int(request.form["Carbs"])
+    
+    return render_template("Web.html", content = aim_data)
 
 
 @app.route('/data', methods=['POST'])
