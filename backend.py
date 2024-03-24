@@ -31,6 +31,9 @@ def set_curr():
     if(truth):
         current_user["username"] = uname
         current_user["password"] = passw
+        return render_template("login.html", bool=True)
+    
+    else: return render_template("login.html", bool=True)
 
 
 
