@@ -26,7 +26,20 @@ def loadInd():
 
 from flask import request, jsonify
     
-    
+@app.route("/data")
+def api_run():
+    return get_api_response()
+
+@app.route("/reset")
+def resethere():
+    return reset_values()
+
+@app.route("/aimset")
+def aimsethere():
+    return aimset()
+
+#new functions start here
+
 
 @app.route("/look/", methods=['GET', 'POST'])
 def look():
@@ -81,21 +94,6 @@ def nutri():
     return render_template("searchFood.html")
 
 
-
-
-@app.route("/data")
-def api_run():
-    return get_api_response()
-
-@app.route("/reset")
-def resethere():
-    return reset_values()
-
-@app.route("/aimset")
-def aimsethere():
-    return aimset()
-
-#new functions start here
 
 @app.route("/generate", methods=['GET', 'POST'])
 def generate():
