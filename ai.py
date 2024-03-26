@@ -1,7 +1,11 @@
 from openai import OpenAI
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 #import time
 
-client = OpenAI(api_key="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")
+client = OpenAI(api_key = os.getenv('API_KEY'))
 
 def get_responses(prompt):
     response = client.chat.completions.create(
