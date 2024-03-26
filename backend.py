@@ -26,7 +26,20 @@ def loadInd():
 
 from flask import request, jsonify
     
-    
+@app.route("/data")
+def api_run():
+    return get_api_response()
+
+@app.route("/reset")
+def resethere():
+    return reset_values()
+
+@app.route("/aimset")
+def aimsethere():
+    return aimset()
+
+#new functions start here
+
 
 @app.route("/look/", methods=['GET', 'POST'])
 def look():
@@ -82,21 +95,6 @@ def nutri():
 
 
 
-
-@app.route("/data")
-def api_run():
-    return get_api_response()
-
-@app.route("/reset")
-def resethere():
-    return reset_values()
-
-@app.route("/aimset")
-def aimsethere():
-    return aimset()
-
-#new functions start here
-
 @app.route("/generate", methods=['GET', 'POST'])
 def generate():
     
@@ -114,7 +112,9 @@ def generate():
    " and my progress at the end of the was "''' + str(goal_data["Fiber"]) + '''
    ". My Carbs Goal for the day was "''' + str(aim_data["Carbs"]) + '''
    " and my progress at the end of the was "''' + str(goal_data["Carbs"]) + '''". 
-   use this data to reccomend me what I should eat. Keep your response very short and concise" 
+   use this data to reccomend me what I should eat. Be blunt in your responses and do not sugarcoat them.
+   Recommend me specific dishes to be more in line with my goals.
+   Keep your response short and concise" 
    ''')
     
      
