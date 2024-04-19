@@ -1,1 +1,1 @@
-Frontend for HackRU project.
+
